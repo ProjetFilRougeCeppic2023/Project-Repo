@@ -1,0 +1,22 @@
+
+
+#searchSpace {
+    width: 80%;
+    margin: 1rem auto;
+}
+#searchSpace form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#searchSpace input {
+  font-size: 1.6rem;
+}
+#searchSpace input[type="search"] {
+  outline: 0; 
+  width: 100%;
+  padding: .4rem 1.6rem;
+  z-index: 1;
+  border: 1px solid black;
+}

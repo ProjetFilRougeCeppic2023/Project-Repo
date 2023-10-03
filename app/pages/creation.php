@@ -11,16 +11,22 @@
 
 <body>
     <header>
-        <?php require_once('./header-footer/header.php') ?>
+        <?php require_once('../header-footer/header.php') ?>
     </header>
 
+    <div id="searchSpace">
+        <form role="search">
+            <input id="search" type="search" placeholder="Search..." />
+        </form>
+    </div>
 
 
 
 
-    
+
+
     <footer>
-        <?php require_once('./header-footer/footer.php') ?>
+        <?php require_once('../header-footer/footer.php') ?>
     </footer>
 
 </body>
