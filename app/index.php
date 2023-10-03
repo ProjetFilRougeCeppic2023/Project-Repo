@@ -14,7 +14,27 @@
         <?php require_once('./header-footer/header.php') ?>
     </header>
 
+    <ul>
+        <li>
+            <a href="./index.php">Home</a>
+        </li>
 
+        <li>
+            <a href="./pages/creation.php">Creation</a>
+        </li>
+
+        <li>
+            <a href="./pages/description.php">Description</a>
+        </li>
+
+        <li>
+            <a href="./pages/search.php">Search</a>
+        </li>
+
+        <li>
+            <a href="./pages/user-board.php">User-Board</a>
+        </li>
+    </ul>
 
 
 
