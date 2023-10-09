@@ -14,11 +14,6 @@
         <?php require_once('../header-footer/header.php') ?>
     </header>
 
-    <div id="searchSpace">
-        <form role="search">
-            <input id="search" type="search" placeholder="Search..." />
-        </form>
-    </div>
 
 
 
