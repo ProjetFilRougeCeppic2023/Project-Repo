@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/search_style.css">
+    <script type="module" src="../scripts/search/scriptSearch.js" defer></script>
     <title>Search</title>
 </head>
 
@@ -22,7 +23,9 @@
 
 
     <section id="movieGrid">
-        <div class="movie">
+
+        <!-- -------------------------- MODELE MOVIE -------------------------- -->
+        <!-- <div class="movie">
             <div class="picture">
                 <img src="" alt="Film picture">
             </div>
@@ -52,8 +55,9 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
 
+        <!-- ------------------------------------------------------------------ -->
 
 
     </section>
