@@ -34,10 +34,13 @@
   margin: 5vh auto 1vh auto;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-wrap: wrap;
 
   border: 1px solid black;
+
+  overflow: scroll;
 }
 
 .movie {
