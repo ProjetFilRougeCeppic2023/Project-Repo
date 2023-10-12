@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/search_style.css">
     <title>Search</title>
 </head>
 
@@ -26,7 +26,11 @@
             <div class="picture">
                 <img src="" alt="Film picture">
             </div>
-            <h2>Title</h2>
+
+            <div class="title">
+                <h2>Title</h2>
+            </div>
+
             <div class="specifications">
                 <ul class="themesList">
                     <li>Theme1</li>
@@ -34,8 +38,17 @@
                     <li>Theme3</li>
                 </ul>
                 <div class="stats">
-                    <div class="upvote">128</div>
-                    <div class="favorites">O</div>
+                    <div class="upvote">
+                        <span>128</span>
+                        <div>
+                            <img src="../images/heart.png" alt="icon vote">
+                        </div>
+                    </div>
+                    <div class="favorites">
+                        <div>
+                            <img src="../images/star_empty.png" alt="favorite button">
+                        </div>
+                    </div>
                 </div>
 
             </div>
