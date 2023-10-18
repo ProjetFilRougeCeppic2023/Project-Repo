@@ -1,2 +1,2 @@
 <?php
-include 'router.php';
+include 'views/home.views.php';
