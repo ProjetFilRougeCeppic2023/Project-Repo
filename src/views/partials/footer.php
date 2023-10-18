@@ -1,3 +1,5 @@
-<?php
+<p>Je suis le footer</p>
 
-echo 'footer';
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,31 +7,37 @@
 
 
 
+
+/*  */
+/*  */
 /* HEADER */
-header {
+/*  */
+/*  */
+#header {
     background-color: red;
+    height: 10rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
 }
 
 /* barre de recherche */
-#recherce {
+#recherche {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: 20px;
 }
 
-input[type="text"] {
+#recherche input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
 }
 
-button {
-    background-color: #007bff;
+#recherche button {
+    background-color: #c5c900;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -40,3 +46,19 @@ button {
     cursor: pointer;
     font-size: 16px;
 }
+/* fin barre de recherche */
+
+#compte {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+/* FOOTER */
+/*  */
+/*  */
+/*  */
+/*  */
