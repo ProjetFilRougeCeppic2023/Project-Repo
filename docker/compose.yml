@@ -1,0 +1,48 @@
+services:
+
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: ${PROJECT}-php
+    restart: always
+    working_dir: /var/www/
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ../src:/var/www
+
+  nginx:
+    image: docker.io/nginx:${NGINX}-alpine
+    container_name: ${PROJECT}-nginx
+    restart: always
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - ../src:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - php
+
+  mariadb:
+    image: mariadb:${MARIADB}
+    container_name: ${PROJECT}-db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: ${PROJECT}-pma
+    restart: always
+    ports:
+      - ${PMA_PORT}:80
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+
+  dbdata:
