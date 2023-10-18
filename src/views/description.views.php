@@ -1,7 +1,7 @@
 
 <header>
-        <?php require_once('../header-footer/header.php') ?>
-    </header>
+    <?php require('views/partials/header.php') ?>
+</header>
 
 
 
@@ -9,6 +9,6 @@
 
 
 
-    <footer>
-        <?php require_once('../header-footer/footer.php') ?>
-    </footer>
+<footer>
+    <?php require('views/partials/footer.php') ?>
+</footer>
