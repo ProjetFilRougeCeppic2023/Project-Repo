@@ -25,35 +25,34 @@
 
     <section id="movieGrid">
 
-        <?php
-        foreach ($currentFilms as $currentFilm) {
-        ?>
+        <?php foreach ($currentFilms as $currentFilm) { ?>
 
             <div class="movie">
                 <div class="picture">
-                    <img src="<?=$currentFilm->icon?>" alt="Film picture">
+                    <img src="<?= $currentFilm->icon ?>" alt="Film picture">
                 </div>
 
                 <div class="title">
-                    <h2><?=$currentFilm->name?></h2>
+                    <h2><?= $currentFilm->name ?></h2>
                 </div>
 
                 <div class="specifications">
                     <ul class="themesList">
-                        <li>Theme1</li>
-                        <li>Theme2</li>
-                        <li>Theme3</li>
+                        <?php foreach ($currentFilm->themes as $theme) { ?>
+                            <li><?= $theme ?></li>
+                        <?php } ?>
                     </ul>
+
                     <div class="stats">
                         <div class="upvote">
-                            <span>128</span>
+                            <span><?= $currentFilm->rating ?></span>
                             <div>
-                                <img src="../images/heart.png" alt="icon vote">
+                                <img src="assets/images/heart.png" alt="icon vote">
                             </div>
                         </div>
                         <div class="favorites">
                             <div>
-                                <img src="../images/star_empty.png" alt="favorite button">
+                                <img src=<?= $currentFilm->isStar ? "assets/images/star_fill.png" : "assets/images/star_empty.png" ?>  alt="favorite button">
                             </div>
                         </div>
                     </div>
@@ -61,9 +60,7 @@
                 </div>
             </div>
 
-        <?php
-        }
-        ?>
+        <?php } ?>
     </section>
 
 
