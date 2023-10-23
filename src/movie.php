@@ -2,14 +2,16 @@
 
 class Movie{
 
+    public $id;
     public $name;
     public $icon;
     public $rating;
     public $themes;
     public $isStar;
 
-    public function __construct($name, $icon, $rating, $themes, $isStar = false)
+    public function __construct($id, $name, $icon, $rating, $themes, $isStar = false)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->icon = $icon;
         $this->rating = $rating;
@@ -25,8 +27,8 @@ class Movie{
 
 
 $currentFilms = [
-    new Movie("Saw 2048","",86,["horror","adventure"]),
-    new Movie("Harry Pot de beurre","",4,["fantasy","comic"],true),
-    new Movie("Titanic 2","",589,["drama"]),
-    new Movie("Fast and happy","",1687,["race","action"])
+    new Movie(1,"Saw 2048","",86,["horror","adventure"]),
+    new Movie(2,"Harry Pot de beurre","",4,["fantasy","comic"],true),
+    new Movie(3,"Titanic 2","",589,["drama"]),
+    new Movie(4,"Fast and happy","",1687,["race","action"])
 ];
