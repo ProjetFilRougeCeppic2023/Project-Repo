@@ -10,9 +10,11 @@ $id = $_GET['id'];
 
 $movie = null;
 
+
+//Loop to search movie -> to change when database is ready
 for ($i = 0; $i < count($currentFilms);$i++)
 {
-    if ($currentFilms[$i]->id === $id )
+    if ($currentFilms[$i]->id == $id )
     {
         $movie = $currentFilms[$i];
         break;
@@ -21,10 +23,6 @@ for ($i = 0; $i < count($currentFilms);$i++)
 
 if (! $movie) {
     abort();
-}
-else
-{
-    echo $movie->name;
 }
 
 include 'views/description.views.php';
