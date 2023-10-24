@@ -1,3 +1,3 @@
 <?php
 
-include 'views/user-board.views.php';
+routeToView("user-board");

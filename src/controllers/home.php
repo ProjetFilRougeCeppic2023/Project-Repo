@@ -1,2 +1,2 @@
 <?php
-include 'views/home.views.php';
+routeToView("home");

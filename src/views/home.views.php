@@ -1,6 +1,3 @@
-<header>
-    <?php require('views/partials/header.php') ?>
-</header>
 
 
 <ul>
@@ -26,8 +23,3 @@
 </ul>
 
 
-
-
-<footer>
-    <?php require('views/partials/footer.php') ?>
-</footer>

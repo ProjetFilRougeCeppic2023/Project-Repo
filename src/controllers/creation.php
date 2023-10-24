@@ -1,4 +1,5 @@
 
 <?php
 
-include 'views/creation.views.php';
+
+routeToView("creation");

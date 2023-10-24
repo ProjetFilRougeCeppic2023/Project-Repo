@@ -1,7 +1,4 @@
-<header>
 
-    <?php require('views/partials/header.php') ?>
-</header>
 
 
 <section id="searchSpace">
@@ -13,7 +10,7 @@
 
 <section id="movieGrid">
 
-    <?php foreach ($currentFilms as $currentFilm) { ?>
+    <?php foreach ($params['movies'] as $currentFilm) { ?>
 
 
         <div class="movie">
@@ -55,7 +52,3 @@
 </section>
 
 
-
-<footer>
-    <?php require('views/partials/footer.php') ?>
-</footer>
