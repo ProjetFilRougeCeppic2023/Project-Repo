@@ -25,5 +25,8 @@ if (! $movie) {
     abort();
 }
 
-include 'views/description.views.php';
+
+routeToView("description",[
+    'movie' => $movie
+]);
 ?>

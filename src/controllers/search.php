@@ -5,4 +5,6 @@ require 'movie.php';
 
 
 
-include 'views/search.views.php';
+routeToView("search",[
+    'movies' => $currentFilms
+]);

@@ -4,6 +4,11 @@ $uriPath = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 
 
 
+function routeToView(string $nameView, string | array $params = null)
+{
+    return require('views/layout.views.php');
+}
+
 
 function routeToController($uri, $routes)
 {
