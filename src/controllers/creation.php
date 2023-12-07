@@ -1,0 +1,5 @@
+
+<?php
+
+
+routeToView("creation");

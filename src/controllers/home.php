@@ -1,0 +1,2 @@
+<?php
+routeToView("home");

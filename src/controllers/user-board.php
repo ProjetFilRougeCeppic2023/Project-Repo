@@ -1,0 +1,3 @@
+<?php
+
+routeToView("user-board");
