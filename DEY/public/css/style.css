@@ -1,17 +1,10 @@
 * {
     box-sizing: border-box;
 }
-img{
-    max-width: 100px;
-}
-#welcome{
-    display: flex;
-    justify-content: space-between;
-}
-
-
 /* Optional: Add some margin between the buttons */
-#logins .nav-item {
-    margin-left: 10px;
+#logins {
+    margin-left: auto;
 }
-
+li {
+    margin-right: 10px;
+}
