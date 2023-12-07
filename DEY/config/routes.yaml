@@ -3,3 +3,18 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+# config/routes.yaml
+welcome:
+    path: /
+    controller: App\Controller\WelcomeController::index
+home:
+    path: /home
+    controller: App\Controller\HomeController::index
+
+dashboard:
+    path: /dashboard
+    controller: App\Controller\DashboardController::index
+
+create:
+    path: /create
+    controller: App\Controller\CreateController::index
