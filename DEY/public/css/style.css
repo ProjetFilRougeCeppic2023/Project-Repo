@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+img{
+    max-width: 100px;
+}
+#logins {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: flex-end; /* Push items to the end of the container */
+    margin-right: 0;
+}
+
+/* Optional: Add some margin between the buttons */
+#logins .nav-item {
+    margin-left: 10px;
+}
+
