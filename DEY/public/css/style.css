@@ -5,14 +5,10 @@ img{
     max-width: 100px;
 }
 #welcome{
+    display: flex;
     justify-content: space-between;
 }
-#logins {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: flex-end; /* Push items to the end of the container */
-    margin: 0;
-}
+
 
 /* Optional: Add some margin between the buttons */
 #logins .nav-item {
