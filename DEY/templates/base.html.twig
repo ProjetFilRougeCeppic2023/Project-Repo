@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Movie Script Creator{% endblock %}</title>
-    {# Add your stylesheets and other common head elements here #}
-</head>
-<body>
-    <header>
-        <h1>Movie Script Creator</h1>
-        {# Add navigation, user dropdown, etc. #}
-    </header>
-    <div class="content">
-        {% block page_content %}{% block body %}{% endblock %}{% endblock %}
-    </div>
-    <footer>
-        {# Add footer content if needed #}
-    </footer>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Movie Script Creator
+			{% endblock %}
+		</title>
+		{# Add your stylesheets and other common head elements here #}
+		{% block stylesheets %}
+			<link href="{{ asset('css/style.css ') }}" rel="stylesheet"/>
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+		{% endblock %}
+		{% block javascripts %}
+			<script src="{{ asset('js/script.js ') }}"></script>
+		{% endblock %}
+	</head>
+	<body>
+		<header>
+			{# Add navigation, user dropdown, etc. #}
+		</header>
+		<main class="content">
+			{% block page_content %}
+				{% block body %}
+                {% endblock %}
+			{% endblock %}
+		</main>
+		<footer>
+			{# Add footer content if needed #}
+		</footer>
+	</body>
 </html>
