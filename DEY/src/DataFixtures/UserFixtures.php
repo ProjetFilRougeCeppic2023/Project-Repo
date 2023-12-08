@@ -17,7 +17,7 @@ class UserFixtures extends Fixture
         // Utilisez $faker pour générer des données aléatoires
         for ($i = 0; $i < 15; $i++) {
             $movie = new User();
-            $movie->setUsername($faker->name);
+            $movie->setUsername($faker->userName());
             $movie->setRoles(['ROLE_USER']);
             $movie->setPassword('motdepasse');
             $movie->setEmail($faker->email());
