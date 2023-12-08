@@ -20,7 +20,7 @@ class UserFixtures extends Fixture
             $movie->setUsername($faker->name);
             $movie->setRoles(['ROLE_USER']);
             $movie->setPassword('motdepasse');
-            $movie->setPassword($faker->email());
+            $movie->setEmail($faker->email());
 
             $manager->persist($movie);
         }
