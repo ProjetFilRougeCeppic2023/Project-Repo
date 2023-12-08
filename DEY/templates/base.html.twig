@@ -36,3 +36,24 @@
 		</footer>
 	</body>
 </html>
+
+<!-- script to handle the button click -->
+
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+var loginButton = document.getElementById('in');
+var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+
+loginButton.addEventListener('click', function () {
+console.log('Login button clicked');
+loginModal.show();
+});
+
+// Add event listener for modal close
+loginModal._element.addEventListener('hidden.bs.modal', function () {
+console.log('Modal hidden');
+// Redirect to the welcome page
+window.location.href = '{{ path('welcome') }}'; // Update with your route name
+});
+});
+</script>
