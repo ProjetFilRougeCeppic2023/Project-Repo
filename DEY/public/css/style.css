@@ -39,6 +39,12 @@ li {
     border-radius: 20px;
     background-color: rgb(251, 65, 65);
 }
+.active-link, .active-link a {
+    background-color: rgb(108, 117, 125);
+    color: white;
+    border-radius: 20px;
+    max-width: 100px;
+}
 
 /* Additional styles for responsiveness */
 @media screen and (max-width: 768px) {
