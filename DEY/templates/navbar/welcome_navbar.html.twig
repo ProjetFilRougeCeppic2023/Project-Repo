@@ -23,4 +23,19 @@
         </div>
     </div>
 </nav>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {# Include the login form here #}
+                {{ render(controller('App\\Controller\\SecurityController::login')) }}
+            </div>
+        </div>
+    </div>
+</div>
 
