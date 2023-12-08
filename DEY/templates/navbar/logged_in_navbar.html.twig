@@ -3,25 +3,28 @@
 <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">
-        <img class="logo" src="{{ asset('img/logo.png') }}" alt="Logo" height="30">
+        <img class="logo" src="{{ asset('img/DEY-cond copy.png') }}" alt="Logo" height="30">
         </a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div id="collapsable-nav" class="collapse navbar-collapse">
-			<ul id="nav-list" class="nav navbar-nav navbar-right">
-				<li class="nav-item">
-					<a class="nav-link active" href="#">Home
-						<span class="visually-hidden">(current)</span>
-					</a>
-				</li>
+            <ul id="nav-list" class="nav navbar-nav navbar-right">
+                <li class="nav-item {% if current_route == 'home' %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('home') }}" style="{% if current_route == 'home' %}background-color: rgb(108, 117, 125); color: white; border-radius: 20px;{% endif %}">
+                        Home
+                        {% if current_route == 'home' %}
+                            <span class="visually-hidden">(current)</span>
+                        {% endif %}
+                    </a>
+                </li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Create</a>
 				</li>
 				<li id= "search-bar" class="nav-item">
 					<form class="d-flex">
 						<input id="search-input" class="form-control me-2" type="search" placeholder="Search">
-						<button class="btn btn-secondary" type="submit">Search</button>
+						<button id="search-button" class="btn btn-secondary" type="submit">Search</button>
 					</form>
 				</li>
 				<li

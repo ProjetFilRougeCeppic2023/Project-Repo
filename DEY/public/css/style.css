@@ -35,6 +35,10 @@ li {
     width: 100%;
     border-radius: 20px;
 }
+#search-button {
+    border-radius: 20px;
+    background-color: rgb(251, 65, 65);
+}
 
 /* Additional styles for responsiveness */
 @media screen and (max-width: 768px) {
