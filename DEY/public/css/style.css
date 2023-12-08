@@ -1,18 +1,55 @@
 * {
     box-sizing: border-box;
 }
-img{
+form{
+    width: 100%;
+}
+/* 1. this is the css of the 2 nav bars in the navbar folder */
+
+/* a. welcome navbar */
+#logins {
+    margin-left: auto;
+}
+li {
+    margin-right: 10px;
+}
+#searchbar {
+    display: flex;
+    justify-content: space-around;
+}
+#collapsable-nav {
+    justify-content: space-around;
+    width: 100%;
+}
+#nav-list {
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+#search-bar{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+#search-input {
+    width: 100%;
+    border-radius: 20px;
+}
+#search-button {
+    border-radius: 20px;
+    background-color: rgb(251, 65, 65);
+}
+.active-link, .active-link a {
+    background-color: rgb(108, 117, 125);
+    color: white;
+    border-radius: 20px;
     max-width: 100px;
 }
-#logins {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    justify-content: flex-end; /* Push items to the end of the container */
-    margin-right: 0;
-}
 
-/* Optional: Add some margin between the buttons */
-#logins .nav-item {
-    margin-left: 10px;
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+    #search-input {
+        max-width: 100%;
+        /* Allow the input to take up the full width on smaller screens */
+    }
 }
-

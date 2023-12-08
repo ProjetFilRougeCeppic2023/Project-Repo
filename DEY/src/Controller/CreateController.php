@@ -16,7 +16,7 @@ class CreateController extends AbstractController
     public function index(): Response
     {
         return $this->render('create/index.html.twig', [
-                'message' => 'Welcome to the Home Page!',
+            'current_route' => $this->container->get('request_stack')->getCurrentRequest()->attributes->get('_route'),
         ]);
     }
 }

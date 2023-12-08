@@ -16,9 +16,9 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
-
-            'message' => 'Welcome to the Home Page!',
-
+            'current_route' => $this->container->get('request_stack')->getCurrentRequest()->attributes->get('_route'),
         ]);
     }
 }
+
+
