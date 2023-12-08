@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "^2.17",
+        "fakerphp/faker": "^1.23",
         "symfony/asset": "7.0.*",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
@@ -20,6 +21,7 @@
         "symfony/yaml": "7.0.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.5",
         "symfony/maker-bundle": "^1.52"
     },
     "config": {
