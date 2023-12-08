@@ -1,14 +1,45 @@
 * {
     box-sizing: border-box;
 }
-/* Optional: Add some margin between the buttons */
+form{
+    width: 100%;
+}
+/* 1. this is the css of the 2 nav bars in the navbar folder */
+
+/* a. welcome navbar */
 #logins {
     margin-left: auto;
 }
 li {
     margin-right: 10px;
 }
-#searchbar{
+#searchbar {
     display: flex;
     justify-content: space-around;
+}
+#collapsable-nav {
+    justify-content: space-around;
+    width: 100%;
+}
+#nav-list {
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+#search-bar{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+#search-input {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+    #search-input {
+        max-width: 100%;
+        /* Allow the input to take up the full width on smaller screens */
+    }
 }
