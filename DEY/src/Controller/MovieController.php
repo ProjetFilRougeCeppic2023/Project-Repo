@@ -7,6 +7,7 @@ use App\Form\MovieType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,6 +21,19 @@ class MovieController extends AbstractController
         return $this->render('movie/index.html.twig', [
             'movies' => $movieRepository->findAll(),
         ]);
+    }
+
+    #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
+    public function search(Request $request, MovieRepository $movieRepository)
+    {
+        // Récupérez les données de la requête
+        $query = $request->query->get('query');
+
+        // Effectuez la logique de recherche (par exemple, utilisez Doctrine pour interroger la base de données)
+        // ...
+        $results = $movieRepository->findByName($query);
+        // Retournez les résultats sous forme de JsonResponse
+        return new JsonResponse(['results' => $results]);
     }
 
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
