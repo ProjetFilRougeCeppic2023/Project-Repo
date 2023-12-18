@@ -45,6 +45,49 @@ li {
     border-radius: 20px;
     max-width: 100px;
 }
+/* styles for the login modal  */
+
+/* public/css/styles.css (adjust the path based on your Symfony structure) */
+
+
+
+/* Add spacing between form controls */
+#authent .form-control {
+    margin-bottom: 15px;
+}
+#gologin{
+    margin-bottom: 60px;
+}
+
+/* Style the login button */
+#authent button {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+/* Center-align and add margin for the notice and teaser */
+#notice,
+#teaser {
+    text-align: center;
+    margin-top: 15px;
+    border-bottom: 5px;
+}
+
+/* Style the links in the notice and teaser */
+#notice a,
+#teaser a {
+    color: #007bff; /* Bootstrap's primary color */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#notice a:hover,
+#teaser a:hover {
+    text-decoration: underline;
+}
+
+
 
 /* Additional styles for responsiveness */
 @media screen and (max-width: 768px) {
