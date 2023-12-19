@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "^2.17",
+        "egulias/email-validator": "*",
         "fakerphp/faker": "^1.23",
         "symfony/asset": "7.0.*",
         "symfony/console": "7.0.*",
@@ -16,15 +17,21 @@
         "symfony/flex": "^2",
         "symfony/form": "7.0.*",
         "symfony/framework-bundle": "7.0.*",
+        "symfony/mailer": "7.0.*",
+        "symfony/mime": "7.0.*",
+        "symfony/polyfill-intl-idn": "^1.28",
         "symfony/runtime": "7.0.*",
         "symfony/security-bundle": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
         "symfony/validator": "7.0.*",
-        "symfony/yaml": "7.0.*"
+        "symfony/yaml": "7.0.*",
+        "symfonycasts/reset-password-bundle": "^1.20"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.5",
-        "symfony/maker-bundle": "^1.52"
+        "symfony/maker-bundle": "^1.52",
+        "symfony/stopwatch": "7.0.*",
+        "symfony/web-profiler-bundle": "7.0.*"
     },
     "config": {
         "allow-plugins": {

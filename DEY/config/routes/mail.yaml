@@ -1,0 +1,3 @@
+test_mail:
+  path: /test/mail
+  controller: App\Controller\TestMailController::sendEmail
