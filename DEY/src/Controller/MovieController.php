@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/movie')]
 class MovieController extends AbstractController
 {
@@ -20,6 +21,15 @@ class MovieController extends AbstractController
         return $this->render('movie/index.html.twig', [
             'movies' => $movieRepository->findAll(),
         ]);
+    }
+
+    #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
+    public function searchz(Request $request, MovieRepository $movieRepository)
+    {
+        $query = $request->query->get('search');
+        $results = $movieRepository->findByName($query);
+    
+        return $this->json(['results' => $results]);
     }
 
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
@@ -71,7 +81,7 @@ class MovieController extends AbstractController
     #[Route('/{id}', name: 'app_movie_delete', methods: ['POST'])]
     public function delete(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$movie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $movie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($movie);
             $entityManager->flush();
         }
