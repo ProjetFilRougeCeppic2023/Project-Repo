@@ -37,10 +37,18 @@ class MovieController extends AbstractController
     {
         $query = $request->query->get('query');
         $results = $movieRepository->findByName($query);
-    
+
         $serializedResults = $this->serializer->serialize($results, 'json');
-    
+
         return new JsonResponse(['results' => $serializedResults]);
+    }
+    #[Route('/searchz', name: 'app_movie_searchz', methods: ['GET'])]
+    public function searchz(Request $request, MovieRepository $movieRepository)
+    {
+        $query = $request->query->get('searchz');
+        $results = $movieRepository->findByName($query);
+    
+        return $this->json(['results' => $results]);
     }
 
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]

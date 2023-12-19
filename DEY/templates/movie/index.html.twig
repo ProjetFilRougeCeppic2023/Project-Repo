@@ -2,7 +2,8 @@
 
 {% block javascripts %}
  {{ parent() }}
- <script src="{{ asset('js/search/searchBar.js') }}"></script>
+ <script src="{{ asset('js/htmx.min.js') }}"></script>
+ <script type="module" src="{{ asset('js/search/searchBar.js') }}"></script>
 {% endblock %}
 
 
@@ -10,45 +11,32 @@
 
 {% block body %}
 
-<div id="search-bar" data-search-url="{{ path('app_movie_search') }}">
-    <input type="text" id="search-input" placeholder="Rechercher des films">
-    <ul id="search-results"></ul>
-</div>
 
+<h3> 
+  Search Contacts 
+  <span class="htmx-indicator"> 
+    <img src="/img/bars.svg"/> Searching... 
+   </span> 
+</h3>
+<input class="form-control" type="searchz" 
+       name="searchz" placeholder="Begin Typing To Search Users..." 
+       data-hx-get="/movie/searchz" 
+       hx-trigger="input changed delay:500ms, search" 
+       hx-target="#search-results" 
+       hx-indicator=".htmx-indicator">
 
-    {# <h1>Movie index</h1>
+<table class="table">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="search-results">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Icon</th>
-                <th>Description</th>
-                <th>Themes</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for movie in movies %}
-            <tr>
-                <td>{{ movie.id }}</td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.icon }}</td>
-                <td>{{ movie.description }}</td>
-                <td>{{ movie.themes }}</td>
-                <td>
-                    <a href="{{ path('app_movie_show', {'id': movie.id}) }}">show</a>
-                    <a href="{{ path('app_movie_edit', {'id': movie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> #}
+    </tbody>
+</table>
 
     <a href="{{ path('app_movie_new') }}">Create new</a>
 

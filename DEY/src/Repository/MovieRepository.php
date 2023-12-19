@@ -34,7 +34,6 @@ class MovieRepository extends ServiceEntityRepository
             ->setParameter('name', '%' . $name . '%')
             ->getQuery()
             ->getResult();
-
         return $results;
     }
 }
