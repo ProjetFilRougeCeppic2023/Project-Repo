@@ -26,7 +26,7 @@ li {
     flex-wrap: nowrap;
     width: 100%;
 }
-#search-results{
+#search-space{
     width: 70%;
     display: flex;
     justify-content: space-between;
