@@ -7,23 +7,14 @@ use App\Form\MovieType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 
 #[Route('/movie')]
 class MovieController extends AbstractController
 {
-    private SerializerInterface $serializer;
-    public function __construct(SerializerInterface $serializer)
-    {
-        $this->serializer = $serializer;
-    }
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
     public function index(MovieRepository $movieRepository): Response
     {
@@ -33,19 +24,9 @@ class MovieController extends AbstractController
     }
 
     #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
-    public function search(Request $request, MovieRepository $movieRepository)
-    {
-        $query = $request->query->get('query');
-        $results = $movieRepository->findByName($query);
-
-        $serializedResults = $this->serializer->serialize($results, 'json');
-
-        return new JsonResponse(['results' => $serializedResults]);
-    }
-    #[Route('/searchz', name: 'app_movie_searchz', methods: ['GET'])]
     public function searchz(Request $request, MovieRepository $movieRepository)
     {
-        $query = $request->query->get('searchz');
+        $query = $request->query->get('search');
         $results = $movieRepository->findByName($query);
     
         return $this->json(['results' => $results]);

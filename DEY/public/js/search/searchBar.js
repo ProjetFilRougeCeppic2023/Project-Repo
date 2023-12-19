@@ -37,29 +37,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     var searchInput = document.getElementById('search-input');
-//     var searchResults = document.getElementById('search-results');
-//     var searchUrl = document.getElementById('search-bar').getAttribute('data-search-url');
-
-//     searchInput.addEventListener('input', function () {
-//         var query = searchInput.value;
-
-//         fetch(searchUrl + '?query=' + encodeURIComponent(query))
-//             .then(response => response.json())
-//             .then(data => {
-//                 // Parse la chaîne JSON ici
-//                 console.log(data);
-//                 const resultsArray = JSON.parse(data.results);
-
-//                 searchResults.innerHTML = '';
-//                 resultsArray.forEach(result => {
-//                     var li = document.createElement('li');
-//                     li.textContent = result.name;
-//                     searchResults.appendChild(li);
-//                 });
-//             })
-//             .catch(error => console.error('Error fetching data:', error));
-//     });
-// });
-
