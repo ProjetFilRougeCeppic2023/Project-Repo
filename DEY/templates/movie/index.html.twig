@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+ {{ parent() }}
+ <script src="{{ asset('js/search/searchBar.js') }}"></script>
+{% endblock %}
+
+
 {% block title %}Movie index{% endblock %}
 
 {% block body %}
 
-<div id="search-bar">
-        <input type="text" id="search-input" placeholder="Rechercher des films">
-        <ul id="search-results"></ul>
-    </div>
+<div id="search-bar" data-search-url="{{ path('app_movie_search') }}">
+    <input type="text" id="search-input" placeholder="Rechercher des films">
+    <ul id="search-results"></ul>
+</div>
 
 
     {# <h1>Movie index</h1>
@@ -46,33 +52,4 @@
 
     <a href="{{ path('app_movie_new') }}">Create new</a>
 
-    <script>
-        // Votre JavaScript pour la barre de recherche
-        // Utilisez jQuery pour simplifier les requêtes Ajax
-        $(document).ready(function() {
-            var searchInput = $('#search-input');
-            var searchResults = $('#search-results');
-
-            searchInput.on('input', function() {
-                // Récupérez la valeur de la recherche
-                var query = searchInput.val();
-
-                // Envoyez une requête au serveur Symfony via Ajax
-                $.ajax({
-                     url: '{{ path('app_movie_search') }}',
-                    method: 'GET',
-                    data: { query: query },
-                    dataType: 'json',
-                    success: function(data) {
-                        // Mettez à jour les résultats de la recherche dans l'interface utilisateur
-                        // Vous pouvez personnaliser cela en fonction de la structure des résultats de votre recherche
-                        searchResults.empty();
-                        data.results.forEach(function(result) {
-                            searchResults.append('<li>' + result.name + '</li>');
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 {% endblock %}
