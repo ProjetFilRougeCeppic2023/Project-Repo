@@ -20,23 +20,16 @@
 </h3>
 <input class="form-control" type="search" 
        name="search" placeholder="Begin Typing To Search Users..." 
-       data-hx-get="/movie/search" 
+       data-hx-get={{path('app_movie_search')}}
        hx-trigger="input changed delay:500ms, search" 
        hx-target="#search-results" 
        hx-indicator=".htmx-indicator">
 
-<table class="table">
-    <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-    </tr>
-    </thead>
-    <tbody id="search-results">
+<div id="search-space">
+    <div id="search-results">
 
-    </tbody>
-</table>
+    </div>
+</div>
 
     <a href="{{ path('app_movie_new') }}">Create new</a>
 

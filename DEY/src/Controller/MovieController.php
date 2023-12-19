@@ -24,7 +24,7 @@ class MovieController extends AbstractController
     }
 
     #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
-    public function searchz(Request $request, MovieRepository $movieRepository)
+    public function search(Request $request, MovieRepository $movieRepository)
     {
         $query = $request->query->get('search');
         $results = $movieRepository->findByName($query);
