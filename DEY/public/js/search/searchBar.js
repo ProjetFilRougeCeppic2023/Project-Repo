@@ -34,16 +34,20 @@ document.addEventListener('DOMContentLoaded', function () {
         var query = searchInput.value;
 
         fetch(searchUrl + '?query=' + encodeURIComponent(query))
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
+            .then(response => response.json())
+            .then(data => {
+                // Parse la chaîne JSON ici
+                console.log(data);
+                const resultsArray = JSON.parse(data.results);
+
                 searchResults.innerHTML = '';
-                data.results.forEach(function (result) {
+                resultsArray.forEach(result => {
                     var li = document.createElement('li');
-                    li.textContent = result.title;
+                    li.textContent = result.name;
                     searchResults.appendChild(li);
                 });
-            });
+            })
+            .catch(error => console.error('Error fetching data:', error));
     });
 });
+

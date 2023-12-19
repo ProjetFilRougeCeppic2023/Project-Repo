@@ -11,10 +11,19 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 
 #[Route('/movie')]
 class MovieController extends AbstractController
 {
+    private SerializerInterface $serializer;
+    public function __construct(SerializerInterface $serializer)
+    {
+        $this->serializer = $serializer;
+    }
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
     public function index(MovieRepository $movieRepository): Response
     {
@@ -26,14 +35,12 @@ class MovieController extends AbstractController
     #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
     public function search(Request $request, MovieRepository $movieRepository)
     {
-        // Récupérez les données de la requête
         $query = $request->query->get('query');
-
-        // Effectuez la logique de recherche (par exemple, utilisez Doctrine pour interroger la base de données)
-        // ...
         $results = $movieRepository->findByName($query);
-        // Retournez les résultats sous forme de JsonResponse
-        return new JsonResponse(['results' => $results]);
+    
+        $serializedResults = $this->serializer->serialize($results, 'json');
+    
+        return new JsonResponse(['results' => $serializedResults]);
     }
 
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
@@ -85,7 +92,7 @@ class MovieController extends AbstractController
     #[Route('/{id}', name: 'app_movie_delete', methods: ['POST'])]
     public function delete(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$movie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $movie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($movie);
             $entityManager->flush();
         }
