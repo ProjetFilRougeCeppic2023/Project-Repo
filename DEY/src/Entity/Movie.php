@@ -26,6 +26,9 @@ class Movie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $themes = null;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $CreationDate = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,5 +87,29 @@ class Movie
         $this->themes = $themes;
 
         return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->CreationDate;
+    }
+
+    public function setCreationDate(\DateTimeInterface $CreationDate): static
+    {
+        $this->CreationDate = $CreationDate;
+
+        return $this;
+    }
+
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreationDateValue(): void
+    {
+        // Set the creation date only if it's not already set
+        if ($this->CreationDate === null) {
+            $this->CreationDate = new \DateTime('now', new \DateTimeZone('UTC'));
+        }
     }
 }

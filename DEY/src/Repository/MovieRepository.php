@@ -21,6 +21,17 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+
+    public function getRecentMovies(){
+        $results = $this->createQueryBuilder('m')
+            ->orderBy('m.CreationDate', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult();
+        return $results;
+    }
+
+
     /**
      * Recherche des films par nom.
      *
@@ -32,6 +43,8 @@ class MovieRepository extends ServiceEntityRepository
         $results = $this->createQueryBuilder('m')
             ->where('m.name LIKE :name')
             ->setParameter('name', '%' . $name . '%')
+            ->orderBy('m.CreationDate', 'DESC')
+            ->setMaxResults(20)
             ->getQuery()
             ->getResult();
         return $results;

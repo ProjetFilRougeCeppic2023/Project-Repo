@@ -20,6 +20,9 @@ class MovieFixtures extends Fixture
             $movie->setName($faker->name);
             $movie->setDescription($faker->paragraph(5));
             $movie->setThemes(implode(',', $faker->words(5)));
+            
+            // Set creation date manually before persisting
+            $movie->setCreationDateValue();
 
             $manager->persist($movie);
         }

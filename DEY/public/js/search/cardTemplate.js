@@ -19,6 +19,24 @@ const createCard = (result) => {
     const themeParagraph = document.createElement('p');
     themeParagraph.textContent = `Theme: ${result.themes}`;
     cardBody.appendChild(themeParagraph);
+
+    const creationDateParagraph = document.createElement('p');
+     // Convertir la date en objet Date
+     const creationDate = new Date(result.CreationDate);
+    
+     // Obtenez les composants de la date
+     const day = creationDate.getDate().toString().padStart(2, '0');
+     const month = (creationDate.getMonth() + 1).toString().padStart(2, '0');
+     const year = creationDate.getFullYear();
+     const hour = creationDate.getHours().toString().padStart(2, '0');
+     const minute = creationDate.getMinutes().toString().padStart(2, '0');
+ 
+     const formattedDate = `${day}/${month}/${year} ${hour}:${minute}`;
+     
+ 
+     creationDateParagraph.textContent = `Creation date: ${formattedDate}`;
+     cardBody.appendChild(creationDateParagraph);
+
   
     card.appendChild(cardBody);
   

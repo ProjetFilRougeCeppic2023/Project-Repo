@@ -16,10 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
-    public function index(MovieRepository $movieRepository): Response
+    public function index($baseSearch = ""): Response
     {
         return $this->render('movie/index.html.twig', [
-            'movies' => $movieRepository->findAll(),
+            'baseSearch' => $baseSearch
         ]);
     }
 
@@ -29,6 +29,10 @@ class MovieController extends AbstractController
         $query = $request->query->get('search');
         $results = $movieRepository->findByName($query);
     
+        foreach ($results as $result) {
+            $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));
+        }
+
         return $this->json(['results' => $results]);
     }
 
@@ -40,6 +44,8 @@ class MovieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $movie->setCreationDateValue();
             $entityManager->persist($movie);
             $entityManager->flush();
 
