@@ -16,10 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
-    public function index(MovieRepository $movieRepository): Response
+    public function index($baseSearch = ""): Response
     {
         return $this->render('movie/index.html.twig', [
-            'movies' => $movieRepository->findAll(),
+            'baseSearch' => $baseSearch
         ]);
     }
 

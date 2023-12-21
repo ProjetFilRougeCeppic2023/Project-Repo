@@ -19,6 +19,11 @@ const createCard = (result) => {
     const themeParagraph = document.createElement('p');
     themeParagraph.textContent = `Theme: ${result.themes}`;
     cardBody.appendChild(themeParagraph);
+
+    const creationDateParagraph = document.createElement('p');
+    creationDateParagraph.textContent = `Creation date : ${result.CreationDate}`;
+    cardBody.appendChild(creationDateParagraph);
+
   
     card.appendChild(cardBody);
   
