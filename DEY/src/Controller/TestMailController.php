@@ -17,7 +17,7 @@ class TestMailController extends AbstractController
     //         'controller_name' => 'TestMailController',
     //     ]);
     // }
-        public function sendEmail(MailerInterface $mailer): Response
+    public function sendEmail(MailerInterface $mailer): Response
     {
         $email = (new Email())
             ->from('your_email@example.com')
