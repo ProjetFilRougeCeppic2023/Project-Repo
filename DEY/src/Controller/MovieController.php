@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/movie')]
 class MovieController extends AbstractController
 {
+    private $currentOrder = 'DESC';
+
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
     public function index($baseSearch = ""): Response
     {
@@ -27,8 +29,13 @@ class MovieController extends AbstractController
     public function search(Request $request, MovieRepository $movieRepository)
     {
         $query = $request->query->get('search');
-        $results = $movieRepository->findByName($query);
-    
+        $order = $request->query->get('order');
+        if (!is_null($order) && $order != $this->currentOrder) {
+            $this->currentOrder = $order;
+        }
+
+        $results = $movieRepository->findByName($query, $this->currentOrder);
+
         foreach ($results as $result) {
             $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));
         }
@@ -44,7 +51,7 @@ class MovieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $movie->setCreationDateValue();
             $entityManager->persist($movie);
             $entityManager->flush();
