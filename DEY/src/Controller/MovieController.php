@@ -44,6 +44,8 @@ class MovieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $movie->setCreationDateValue();
             $entityManager->persist($movie);
             $entityManager->flush();
 
