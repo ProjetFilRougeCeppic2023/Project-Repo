@@ -111,6 +111,5 @@ class Movie
         if ($this->CreationDate === null) {
             $this->CreationDate = new \DateTime('now', new \DateTimeZone('UTC'));
         }
-        var_dump($this->CreationDate);
     }
 }

@@ -33,7 +33,6 @@ const createCard = (result) => {
  
      const formattedDate = `${day}/${month}/${year} ${hour}:${minute}`;
      
-     console.dir(creationDate);
  
      creationDateParagraph.textContent = `Creation date: ${formattedDate}`;
      cardBody.appendChild(creationDateParagraph);
