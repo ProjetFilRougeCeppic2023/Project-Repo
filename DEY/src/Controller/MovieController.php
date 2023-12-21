@@ -29,6 +29,10 @@ class MovieController extends AbstractController
     public function search(Request $request, MovieRepository $movieRepository)
     {
         $query = $request->query->get('search');
+        $order = $request->query->get('order');
+        if (!is_null($order) && $order != $this->currentOrder) {
+            $this->currentOrder = $order;
+        }
 
         $results = $movieRepository->findByName($query, $this->currentOrder);
 

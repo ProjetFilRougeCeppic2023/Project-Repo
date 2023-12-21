@@ -52,8 +52,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function triggerSearch() {
         const searchInput = document.querySelector('input[name="search"]');
         const value = searchInput.value;
-
-        // Déclenchez la recherche avec la valeur actuelle du champ de recherche
-        htmx.trigger(searchInput, 'search', { params: { search: value } });
+        const order = option1.checked ? 'DESC' : 'ASC';
+        // Déclenchez la recherche avec la valeur actuelle du champ de recherche et l'ordre
+        htmx.trigger(searchInput, 'search', { params: { search: value, order: order } });
     }
+
+    document.body.addEventListener('htmx:configRequest', function(evt) {
+        evt.detail.parameters['search'] = document.querySelector('input[name="search"]').value; 
+        evt.detail.parameters['order'] =option1.checked ? 'DESC' : 'ASC'; 
+    });
 });

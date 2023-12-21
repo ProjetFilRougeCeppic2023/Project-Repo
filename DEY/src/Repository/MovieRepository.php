@@ -38,7 +38,7 @@ class MovieRepository extends ServiceEntityRepository
      * @param string $name
      * @return array
      */
-    public function findByName(string $name, string $order = 'DESC')
+    public function findByName(string $name, string $order)
     {
         $results = $this->createQueryBuilder('m')
             ->where('m.name LIKE :name')

@@ -25,7 +25,8 @@
     placeholder="Begin Typing To Search Movies..." 
     data-hx-get={{path('app_movie_search')}} 
     hx-trigger="input changed delay:500ms, search, load" 
-    hx-target="#search-results" hx-indicator=".htmx-indicator" value="{{baseSearch}}">
+    hx-target="#search-results" 
+    hx-indicator=".htmx-indicator" value="{{baseSearch}}">
 
 	<p>
 		Order by :
@@ -45,7 +46,7 @@
 	<div id="search-space">
 		<div id="search-results">
     </div>
-	</div>
+	
 
 	<a href="{{ path('app_movie_new') }}">
 		Create new
