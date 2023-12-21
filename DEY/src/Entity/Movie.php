@@ -26,7 +26,7 @@ class Movie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $themes = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $CreationDate = null;
 
     public function getId(): ?int
@@ -109,7 +109,8 @@ class Movie
     {
         // Set the creation date only if it's not already set
         if ($this->CreationDate === null) {
-            $this->CreationDate = new \DateTime();
+            $this->CreationDate = new \DateTime('now', new \DateTimeZone('UTC'));
         }
+        var_dump($this->CreationDate);
     }
 }

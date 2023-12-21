@@ -21,8 +21,22 @@ const createCard = (result) => {
     cardBody.appendChild(themeParagraph);
 
     const creationDateParagraph = document.createElement('p');
-    creationDateParagraph.textContent = `Creation date : ${result.CreationDate}`;
-    cardBody.appendChild(creationDateParagraph);
+     // Convertir la date en objet Date
+     const creationDate = new Date(result.CreationDate);
+    
+     // Obtenez les composants de la date
+     const day = creationDate.getDate().toString().padStart(2, '0');
+     const month = (creationDate.getMonth() + 1).toString().padStart(2, '0');
+     const year = creationDate.getFullYear();
+     const hour = creationDate.getHours().toString().padStart(2, '0');
+     const minute = creationDate.getMinutes().toString().padStart(2, '0');
+ 
+     const formattedDate = `${day}/${month}/${year} ${hour}:${minute}`;
+     
+     console.dir(creationDate);
+ 
+     creationDateParagraph.textContent = `Creation date: ${formattedDate}`;
+     cardBody.appendChild(creationDateParagraph);
 
   
     card.appendChild(cardBody);

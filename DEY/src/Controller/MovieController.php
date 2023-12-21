@@ -29,6 +29,10 @@ class MovieController extends AbstractController
         $query = $request->query->get('search');
         $results = $movieRepository->findByName($query);
     
+        foreach ($results as $result) {
+            $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));
+        }
+
         return $this->json(['results' => $results]);
     }
 
