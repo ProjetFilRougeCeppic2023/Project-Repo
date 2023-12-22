@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/movie')]
 class MovieController extends AbstractController
@@ -26,7 +26,7 @@ class MovieController extends AbstractController
     }
 
     #[Route('/search', name: 'app_movie_search', methods: ['GET'])]
-    public function search(Request $request, MovieRepository $movieRepository)
+    public function search(Request $request, MovieRepository $movieRepository, SerializerInterface $serializer)
     {
         $query = $request->query->get('search');
         $order = $request->query->get('order');
@@ -40,7 +40,32 @@ class MovieController extends AbstractController
             $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));
         }
 
-        return $this->json(['results' => $results]);
+        $serializedResults = $this->serializeMovies($results, $serializer);
+
+        return $this->json(['results' => $serializedResults]);
+    }
+
+    private function serializeMovies($movies, SerializerInterface $serializer)
+    {
+        $serializedMovies = [];
+
+        foreach ($movies as $movie) {
+            $tagsData = $serializer->serialize($movie->getTags(), 'json', ['groups' => 'movie']);
+            $tagsArray = json_decode($tagsData, true);
+            $serializedMovie = [
+                'id' => $movie->getId(),
+                'name' => $movie->getName(),
+                'icon' => $movie->getIcon(),
+                'description' => $movie->getDescription(),
+                'themes' => $movie->getThemes(),
+                'creationDate' => $movie->getCreationDate(),
+                'tags' => $tagsArray,
+            ];
+
+            $serializedMovies[] = $serializedMovie;
+        }
+
+        return $serializedMovies;
     }
 
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
