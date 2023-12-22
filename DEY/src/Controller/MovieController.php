@@ -18,8 +18,10 @@ class MovieController extends AbstractController
     private $currentOrder = 'DESC';
 
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
-    public function index($baseSearch = ""): Response
+    public function index(?Request $request = null): Response
     {
+        $baseSearch = $request != null ? $baseSearch = $request->query->get('baseSearch') : "";
+
         return $this->render('movie/index.html.twig', [
             'baseSearch' => $baseSearch
         ]);
