@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
+use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,14 +17,22 @@ use Symfony\Component\Serializer\SerializerInterface;
 class MovieController extends AbstractController
 {
     private $currentOrder = 'DESC';
+    private $tagRepository;
+
+    public function __construct(TagRepository $tagRepository)
+    {
+        $this->tagRepository = $tagRepository;
+    }
 
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
     public function index(?Request $request = null): Response
     {
         $baseSearch = $request != null ? $baseSearch = $request->query->get('baseSearch') : "";
+        $tags = $this->tagRepository->findAll();
 
         return $this->render('movie/index.html.twig', [
-            'baseSearch' => $baseSearch
+            'baseSearch' => $baseSearch,
+            'tags' => $tags
         ]);
     }
 
