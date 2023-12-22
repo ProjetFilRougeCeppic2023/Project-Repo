@@ -27,6 +27,14 @@
                 <th>Themes</th>
                 <td>{{ movie.themes }}</td>
             </tr>
+            <tr>
+                <th>Tags</th>
+                <td>
+                    {% for tag in movie.tags %}
+                        {{ tag.name }} 
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
