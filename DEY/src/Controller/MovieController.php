@@ -41,11 +41,11 @@ class MovieController extends AbstractController
     {
         $query = $request->query->get('search');
         $order = $request->query->get('order');
+        $tags = json_decode($request->query->get('tags'), true);
         if (!is_null($order) && $order != $this->currentOrder) {
             $this->currentOrder = $order;
         }
-
-        $results = $movieRepository->findByName($query, $this->currentOrder);
+        $results = $movieRepository->findByName($query, $this->currentOrder, $tags);
 
         foreach ($results as $result) {
             $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));

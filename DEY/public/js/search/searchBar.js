@@ -40,13 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const option2 = document.getElementById('option2');
 
     // Ajoutez un écouteur d'événements pour le changement de bouton radio
-    option1.addEventListener('change', function() {
-        triggerSearch();
-    });
+    option1.addEventListener('change', triggerSearch);
 
-    option2.addEventListener('change', function() {
-        triggerSearch();
-    });
+    option2.addEventListener('change', triggerSearch);
 
     // Fonction pour déclencher la recherche
     function triggerSearch() {
@@ -54,11 +50,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const value = searchInput.value;
         const order = option1.checked ? 'DESC' : 'ASC';
         // Déclenchez la recherche avec la valeur actuelle du champ de recherche et l'ordre
-        htmx.trigger(searchInput, 'search', { params: { search: value, order: order } });
+        htmx.trigger(searchInput, 'search', { parameters: { search: value, order: order, tags: getTagsChecked() } });
+    }
+
+    const tagList = document.querySelectorAll('#tags input');
+    tagList.forEach((element)=>{
+        element.addEventListener('change',triggerSearch);
+    })
+
+    function getTagsChecked(){
+        let $returnValue = [];
+        tagList.forEach(element => {
+            if (element.checked)
+            {
+                $returnValue.push(element.name);
+            }
+        });
+        return JSON.stringify($returnValue);
     }
 
     document.body.addEventListener('htmx:configRequest', function(evt) {
         evt.detail.parameters['search'] = document.querySelector('input[name="search"]').value; 
         evt.detail.parameters['order'] =option1.checked ? 'DESC' : 'ASC'; 
+        evt.detail.parameters['tags'] = getTagsChecked(); 
     });
 });
