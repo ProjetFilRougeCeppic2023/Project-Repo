@@ -41,6 +41,16 @@
 				Oldest
 			</label>
 		</span>
+	</p>	
+	<p>
+		Tags :
+		<span id="tags">
+		{% for tag in tags %}
+			<input type="checkbox" class="btn-check" id="btn-check-{{ tag.id }}" autocomplete="off" name="{{ tag.id }}">
+			<label class="btn btn-outline-primary" for="btn-check-{{ tag.id }}">{{tag.name}}</label>
+		{% endfor %}
+
+		</span>
 	</p>
   
 	<div id="search-space">
@@ -50,6 +60,9 @@
 
 	<a href="{{ path('app_movie_new') }}">
 		Create new
+	</a>
+	<a href="{{ path('app_movie_index',{'baseSearch': 'bl'}) }}">
+		Test
 	</a>
 
 {% endblock %}

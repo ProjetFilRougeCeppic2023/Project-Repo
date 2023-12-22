@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
+use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,22 @@ use Symfony\Component\Serializer\SerializerInterface;
 class MovieController extends AbstractController
 {
     private $currentOrder = 'DESC';
+    private $tagRepository;
+
+    public function __construct(TagRepository $tagRepository)
+    {
+        $this->tagRepository = $tagRepository;
+    }
 
     #[Route('/', name: 'app_movie_index', methods: ['GET'])]
-    public function index($baseSearch = ""): Response
+    public function index(?Request $request = null): Response
     {
+        $baseSearch = $request != null ? $baseSearch = $request->query->get('baseSearch') : "";
+        $tags = $this->tagRepository->findAll();
+
         return $this->render('movie/index.html.twig', [
-            'baseSearch' => $baseSearch
+            'baseSearch' => $baseSearch,
+            'tags' => $tags
         ]);
     }
 
@@ -30,11 +41,11 @@ class MovieController extends AbstractController
     {
         $query = $request->query->get('search');
         $order = $request->query->get('order');
+        $tags = json_decode($request->query->get('tags'), true);
         if (!is_null($order) && $order != $this->currentOrder) {
             $this->currentOrder = $order;
         }
-
-        $results = $movieRepository->findByName($query, $this->currentOrder);
+        $results = $movieRepository->findByName($query, $this->currentOrder, $tags);
 
         foreach ($results as $result) {
             $result->setCreationDate($result->getCreationDate()->setTimezone(new \DateTimeZone('Europe/Paris')));
