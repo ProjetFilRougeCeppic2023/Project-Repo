@@ -35,7 +35,15 @@ const createCard = (result) => {
      
  
      creationDateParagraph.textContent = `Creation date: ${formattedDate}`;
+
      cardBody.appendChild(creationDateParagraph);
+
+
+     const tagsParagraph = document.createElement('p');
+    const tags = result.tags.map(tag => tag.name).join(', ');
+    tagsParagraph.textContent = `Tags: ${tags}`;
+    cardBody.appendChild(tagsParagraph);
+
 
   
     card.appendChild(cardBody);
