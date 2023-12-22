@@ -22,8 +22,7 @@ const createCard = (result) => {
 
     const creationDateParagraph = document.createElement('p');
      // Convertir la date en objet Date
-     const creationDate = new Date(result.CreationDate);
-    
+     const creationDate = new Date(result.creationDate);
      // Obtenez les composants de la date
      const day = creationDate.getDate().toString().padStart(2, '0');
      const month = (creationDate.getMonth() + 1).toString().padStart(2, '0');
